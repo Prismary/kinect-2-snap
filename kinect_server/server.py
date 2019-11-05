@@ -6,7 +6,7 @@ import ctypes
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from gevent.wsgi import WSGIServer
+from gevent.pywsgi import WSGIServer
 
 import kinect
 
@@ -116,7 +116,7 @@ def setup():
     @app.route("/num_tracked")
     def num_tracked():
         return str(kinect_data.get_num_tracked())
-        
+
     @app.route("/tracked_players")
     def tracked_players():
         if should_use_json():
